@@ -1,0 +1,10 @@
+com\xptotec\keyfalls\model\Cargo.class
+com\xptotec\keyfalls\model\Candidato.class
+com\xptotec\keyfalls\model\Usuario.class
+com\xptotec\keyfalls\model\Locais_Prova.class
+com\xptotec\keyfalls\model\Relatorio.class
+com\xptotec\keyfalls\model\Funcionario.class
+com\xptotec\keyfalls\model\Prova.class
+com\xptotec\keyfalls\model\Salas.class
+com\xptotec\keyfalls\KeyfallsApplication.class
+com\xptotec\keyfalls\banco\Criar_Banco.class
