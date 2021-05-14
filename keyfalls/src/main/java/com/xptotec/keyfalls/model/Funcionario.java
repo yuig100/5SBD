@@ -1,5 +1,8 @@
 package com.xptotec.keyfalls.model;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 public class Funcionario extends Usuario {
 
     /**
@@ -10,9 +13,10 @@ public class Funcionario extends Usuario {
    
     int matricula;
     
-    /*
+	@OneToOne
+	@JoinColumn(name = "id_salas",referencedColumnName = "id_salas")
     Salas sala;
-    */
+
 
 	public Funcionario(int id, String username, String senha, String nome, String cPF, String cEP, String endereco,
 			String telefone, String endereco_email, char sexo, int matricula) {

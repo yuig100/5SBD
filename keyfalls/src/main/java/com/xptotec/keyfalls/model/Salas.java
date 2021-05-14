@@ -1,12 +1,16 @@
 package com.xptotec.keyfalls.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,10 +29,18 @@ public class Salas implements Serializable {
     @Column(name="numeracao")
     String numeracao;
     
-    /*
+	@ManyToOne
+	@JoinColumn(name="id_cargo",nullable = true)
 	Cargo cargo;
+    
+	@ManyToOne
+	@JoinColumn(name="id_locais_prova",nullable = true)
 	Locais_Prova locais_prova;
-	Candidato[] candidato;
+
+	@ManyToMany(mappedBy = "prova")
+	private List<Candidato> candidato;
+	
+    /*
 	Funcionario funcionario;
 	*/
 

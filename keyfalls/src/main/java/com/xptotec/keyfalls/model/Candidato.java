@@ -1,9 +1,15 @@
 package com.xptotec.keyfalls.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,28 +22,41 @@ public class Candidato extends Usuario {
 	private static final long serialVersionUID = 1L;
 
 	int inscricao;
-	
+
 	@Column(name = "data_de_inscricao")
 	Date data_de_inscricao;
-	
+
 	@Column(name = "data_nascimento")
 	Date data_nascimento;
-	
+
 	@Column(name = "renda")
 	double renda;
-	
+
 	@Column(name = "insento")
 	boolean insento;
-	
+
 	@Column(name = "nota")
 	double nota;
-	
-	/*
-	Locais_Prova locais_prova;
-	Salas[] salas;
+
+	@ManyToOne
+	@JoinColumn(name = "id_locais_prova", nullable = true)
+	private Locais_Prova locais_prova;
+
+	@ManyToOne
+	@JoinColumn(name = "id_cargo", nullable = true)
 	Cargo cargo;
-	Prova[] prova;
-	*/
+
+	@OneToMany(mappedBy = "candidato")
+	private List<Prova> prova;
+
+	@ManyToMany
+	@JoinTable(name = "candidato_sala", joinColumns = @JoinColumn(name = "candidato_fk"), inverseJoinColumns = @JoinColumn(name = "sala_fk"))
+	private List<Salas> salas;
+	
+	@ManyToOne
+	@JoinColumn(name="id_relatorio",nullable = true)
+	Relatorio relatorio;
+	
 	
 	public Candidato(int id, String username, String senha, String nome, String cPF, String cEP, String endereco,
 			String telefone, String endereco_email, char sexo, int inscricao, Date data_de_inscricao,
@@ -99,5 +118,4 @@ public class Candidato extends Usuario {
 		this.nota = nota;
 	}
 
-	
 }
