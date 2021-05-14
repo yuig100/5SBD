@@ -1,8 +1,12 @@
 package com.xptotec.keyfalls.model;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="Funcionario")
 public class Funcionario extends Usuario {
 
     /**
